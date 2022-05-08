@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% block not_default_static %}
+    <link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="px-4 py-5 my-5 text-center">
+    <h1 class="display-5 fw-bold">Know ledge - путь к знаниям</h1>
+    <h4 class="display-9 fw-bold">Know ledge - это переосмысленный проект, написанный с нуля</h4>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Этот сайт создан для упрощения электронного обучения как учителям, так и детям. Минималестичный дизайн позволяет вам легко разобраться в сайте, и начать в нём работу. В первую очередь наш сайт направлен на обычных школьников и учителей.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        {% if current_user.is_authenticated %}
+            <h4>Скорее приступай к работе: </h4>
+          {% if current_user.is_teacher %}
+            <a class="btn btn-outline-light me-2" href="/teacher_profile"> Личный кабинет</a>
+          {% else %}
+            <a class="btn btn-outline-light me-2" href="/student_profile"> Личный кабинет</a>
+          {% endif %}
+        {% else %}
+            <h4>Скорее регистрируйся: </h4>
+            <a class="btn btn-outline-light me-2" href="/reqister_student">Зарегистрироваться учеником</a>
+            <a class="btn btn-outline-light " href="/register_teacher">Зарегистрироваться учителем</a>
+        {% endif %}
+      </div>
+    </div>
+</div>
+
+{% endblock %}

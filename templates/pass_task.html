@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+
+{% block not_default_static %}
+    <link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="text-center form-signin">
+  <form method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <h1 class="h3 mb-3 fw-normal">Прохождение урока</h1>
+      {% for task in lesson.tasks %}
+      <p>{{ task.question }}</p>
+      <div class="form-floating text-white bg-dark">
+        <input type="text" id="task_{{ task.id }}" name="task_{{ task.id }}" autocomplete="off" class="form-control bg-dark text-white">
+      </div>
+      <p></p>
+      {% endfor %}
+      <button class="w-100 btn btn-lg btn-primary" type="submit">Сдать задание</button>
+  </form>
+</div>
+{% endblock %}

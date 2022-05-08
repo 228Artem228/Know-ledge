@@ -1,0 +1,13 @@
+{% extends "core/base.html" %}
+
+{% block not_default_static %}
+    <link href="{{ url_for('static', filename='css/list-groups.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="list-group list-group">
+    <a href="/all_courses" class="list-group-item py-3 text-white bg-dark" > Все курсы </a>
+    <a href="/all_results_courses" class="list-group-item py-3 text-white bg-dark" > Результаты </a>
+    <a href="/my_teachers" class="list-group-item py-3 text-white bg-dark" > Мои учителя </a>
+</div>
+{% endblock %}
